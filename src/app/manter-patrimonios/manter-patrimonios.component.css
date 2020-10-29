@@ -1,0 +1,19 @@
+#form {
+    position: relative;
+    left: 25px;
+}
+
+.table-overflow {
+    position: relative;
+    top: 25px;
+    left: -40px;
+    max-height: 250px;
+    max-width: 900px;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.medio {
+    position: relative;
+    top: 70px;
+}

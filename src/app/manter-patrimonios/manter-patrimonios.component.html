@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center mt-5">
+            <h2 class="display-5"><i class="fa fa-home text-success"></i> Cadastro de Patrimonio</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-5">
+        <div class="col-sm-12 col-md-10 col-lg-10">
+            <form id="form" #frm="ngForm">
+                <div class="form-row">
+                    <div class="form-group col-lg-5">
+                        <label for="inputDescricao">Descrição</label>
+                        <input [(ngModel)]="patrimonio.descricao" name="descricao" type="text" class="form-control" id="inputDescricao" placeholder="Descricao" maxlength="100" required>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="inputTamanhoPatrimonio">Tamanho do Patrimonio</label>
+                        <input [(ngModel)]="patrimonio.tamanho" name="tamanho" type="number" class="form-control" min="1" max="1000000" id="inputTamanhoPatrimonio" placeholder="Tamanho do Patrimonio" required>
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="inputLote">Lt</label>
+                        <input [(ngModel)]="patrimonio.lote" name="lote" type="number" class="form-control" min="1" max="1000000" id="inputLote" placeholder="Lt">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-5">
+                        <label for="inputLogradouro">Logradouro</label>
+                        <input [(ngModel)]="patrimonio.logradouro" name="logradouro" type="text" minlength="5" maxlength="100" class="form-control" id="inputLogradouro" placeholder="Logradouro" required>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="inputRua">Rua</label>
+                        <input [(ngModel)]="patrimonio.rua" name="rua" type="text" minlength="5" maxlength="100" class="form-control" id="inputRua" placeholder="Rua" required>
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="inputQuadra">Qd</label>
+                        <input [(ngModel)]="patrimonio.quadra" name="quadra" type="number" min="1" max="1000000" class="form-control" id="inputQuadra" placeholder="Qd" required>
+                    </div>
+                </div>
+
+                <div class="container" id="tabela">
+                    <div class="table-overflow">
+                        <table class="table table-bordered-sm table-hover table-active" id="tabela">
+                            <thead class="bg-success">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Tamanho</th>
+                                    <th scope="col">Logradouro</th>
+                                    <th scope="col">Rua</th>
+                                    <th scope="col">Lote</th>
+                                    <th scope="col">Quadra</th>
+                                    <th scope="col">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let patrimonio of patrimonios">
+                                    <td>{{patrimonio.id}}</td>
+                                    <td>{{patrimonio.descricao}}</td>
+                                    <td>{{patrimonio.tamanho}}</td>
+                                    <td>{{patrimonio.logradouro}}</td>
+                                    <td>{{patrimonio.rua}}</td>
+                                    <td>{{patrimonio.lote}}</td>
+                                    <td>{{patrimonio.quadra}}</td>
+                                    <td><button class="btn btn-success" (click)="retornar(patrimonio.id)">Selecionar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="button" class="btn btn-danger ml-1 medio" (click)="deletar(patrimonio.id)" [disabled]="frm.invalid">Apagar</button>
+                    <button type="button" class="btn btn-success ml-2 medio" (click)="salvar()" [disabled]="frm.invalid">Salvar</button>
+                    <button type="button" class="btn btn-secondary ml-2 medio" (click)="limpar()">Limpar</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
